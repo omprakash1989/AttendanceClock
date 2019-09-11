@@ -3,7 +3,7 @@ Settings sample file.
 """
 import enum
 
-DEBUG = True
+DEBUG = False
 SQLALCHEMY_DATABASE_URI = "postgres://wxitcnhdxahlvi:4b84e2f830999ee136366f4e7302d3f9eb1c7a3ca5b73c42ac1cc9043f7607ed@ec2-174-129-229-106.compute-1.amazonaws.com:5432/d22tess123bs21"
 TESTING = True
 

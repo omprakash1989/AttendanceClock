@@ -2,7 +2,6 @@
 Helper module for the Slack notification operations.
 """
 
-from settings import slack_client
 
 
 class SlackUtil:
@@ -101,9 +100,7 @@ class SlackUtil:
             None: In case of no response from slack event.
         """
 
-        channels_call = slack_client.api_call("channels.list")
-        if channels_call.get('ok'):
-            return channels_call['channels']
+        # Configure slack channel
         return None
 
     @staticmethod
@@ -243,5 +240,4 @@ class SlackUtil:
             }
         """
 
-        return slack_client.api_call("chat.postMessage", channel=channel_id, text=message, username=username,
-                                     icon_emoji=icon_emoji)
+        return None
