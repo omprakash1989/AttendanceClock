@@ -1,0 +1,14 @@
+# VIM: Swap files
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+add
+*.egg-info
+.idea
+*.pyc
+__pycache__
+settings_local.py
+.coverage
+.cache
+htmlcov

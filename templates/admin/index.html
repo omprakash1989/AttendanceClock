@@ -1,0 +1,43 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{% if current_user.is_authenticated %}
+<div style="height:50px, witdth:100%">
+ {{ "Welcome" }} {{ current_user.name }}
+</div>
+  <div style="margin-top: 100px; width: 100%">
+    {% if success and message %}
+    <div style="color: green">message</div>
+    {% endif %}
+
+    {% if error and message %}
+    <div style="color: red">message</div>
+    {% endif %}
+
+    <a class="btn btn-primary" href="/himama/logout/" title="logout">Logout</a>
+    {% if not current_user.is_admin%}
+      {% if current_user.active_spell %}
+        <a class="btn btn-primary" href="/himama/attendance/clock_out/" title="clock out">Clock Out</a>
+    {% else %}
+        <a class="btn btn-primary" href="/himama/attendance/clock_in/" title="clock in">Clock In</a>
+      {% endif %}
+    {% endif %}
+  </div>
+{% else %}
+<div  style="height: 50px"><a class="btn btn-primary" href="/himama/login" title="login">Login</a></div>
+{% endif %}
+{% endblock %}
+
+
+<style>
+  .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+</style>
