@@ -1,1 +1,1 @@
-worker: flask run
+web: python wsgi.py
