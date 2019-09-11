@@ -57,4 +57,3 @@ Flask-Admin==1.5.1
 Flask-Login==0.4.1
 timezones==2.0.1
 flask_wtf==0.14.2
-flask_migrate
