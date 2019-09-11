@@ -256,7 +256,7 @@ class AdminUserView(ModelView):
     form_widget_args = dict(
         password=dict(
             placeholder='Enter new password here to change password',
-        ),
+        )
     )
 
     def is_accessible(self):
