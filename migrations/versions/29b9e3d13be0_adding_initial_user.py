@@ -35,7 +35,7 @@ def upgrade():
     user = application_user.fetchone()
 
     if not user:
-        conn.execute("INSERT INTO application_users (user_name, password, email, name, created_dttm, created_by, is_admin"
+        conn.execute("INSERT INTO application_users (user_name, password, email, name, created_dttm, created_by, is_admin,"
                      " is_active) VALUES ('{}', '{}', '{}', '{}', NOW(), '{}', TRUE, TRUE )".format(user_name, password, email, name, 'Migration User'))
 
 
