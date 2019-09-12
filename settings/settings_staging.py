@@ -6,9 +6,6 @@ import os
 
 import os
 import enum
-
-from api.punching_clock.helpers.misc_helper import get_bool_value
-
 ENV = 'staging'
 
 DEBUG = False
