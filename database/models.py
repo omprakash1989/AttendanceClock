@@ -193,7 +193,7 @@ class SpellView(ModelView):
 
     @property
     def can_create(self):
-        return current_user.is_admin or current_user.can_create
+        return False
 
     @property
     def can_delete(self):
@@ -232,7 +232,7 @@ class PasswordField(TextField):
 
 class AdminUserView(ModelView):
 
-    column_list = ('user_name', 'email', 'name', 'created_dttm', 'updated_dttm', 'created_by', 'updated_by', 'is_active')
+    column_list = ('user_name', 'email', 'name', 'is_active', 'can_edit', 'can_delete')
 
     @property
     def can_edit(self):
