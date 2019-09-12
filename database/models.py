@@ -232,7 +232,8 @@ class PasswordField(TextField):
 
 class AdminUserView(ModelView):
 
-    column_list = ('user_name', 'email', 'name', 'is_active', 'can_edit', 'can_delete')
+    column_list = ('user_name', 'email', 'name', 'is_active', 'can_edit', 'can_delete', 'is_admin')
+    form_excluded_columns = ('created_by', 'updated_by', 'created_dttm', 'updated_dttm')
 
     @property
     def can_edit(self):
