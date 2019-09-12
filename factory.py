@@ -52,7 +52,7 @@ def initialize_app(flask_app, config='settings', override={}):
     if override:
         flask_app.config.update(override)
 
-    admin = Admin(flask_app, name='Employee Attendance', template_mode='bootstrap3')
+    admin = Admin(flask_app, name='Employee Attendance', template_mode='bootstrap3', url='/himama/home')
     admin.add_view(AdminUserView(ApplicationUser, db.session, 'Teachers'))
     admin.add_view(SpellView(Spell, db.session, 'Clock Timings'))
 
