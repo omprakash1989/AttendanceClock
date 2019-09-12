@@ -9,7 +9,7 @@ import enum
 
 from api.punching_clock.helpers.misc_helper import get_bool_value
 
-ENV = 'production'
+ENV = 'staging'
 
 DEBUG = False
 SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_DATABASE_URI']

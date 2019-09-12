@@ -45,3 +45,4 @@ else:
 
 # Identify the timezone lookup database
 GEOIP_DATA_LOCATION = "static/GeoLiteCity.dat"
+CELERY_BROKER_URL = ''

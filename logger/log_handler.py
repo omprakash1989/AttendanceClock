@@ -7,7 +7,7 @@ import pytz
 from flask import g
 import traceback
 
-from settings import ERROR_MAIL_RECEIVERS, ERROR_MAIL_SENDER, ENV, DEBUG
+from settings import ENV, DEBUG
 from api.punching_clock.tasks import send_error_mail_c, send_slack_notification_c
 
 
@@ -100,8 +100,8 @@ class ErrorEmailHandler(logging.handlers.SMTPHandler):
         logging.handlers.SMTPHandler.__init__(
             self,
             mailhost='',
-            fromaddr=ERROR_MAIL_SENDER,
-            toaddrs=ERROR_MAIL_RECEIVERS,
+            fromaddr='',
+            toaddrs=[],
             subject='',
             credentials='',
             secure=True
