@@ -26,25 +26,28 @@ class ClockOut(Resource):
 
         """
 
-        success = True
-        error = False
-        message = ''
+        try:
+            success = True
+            error = False
+            message = ''
 
-        user = current_user
-        current_time = datetime.now()
-        active_spell = check_if_any_active_spell(current_user.id)
-        is_active_spell = True if active_spell else False
+            user = current_user
+            current_time = datetime.now()
+            active_spell = check_if_any_active_spell(current_user.id)
+            is_active_spell = True if active_spell else False
 
-        # If active spell then end it.
-        if active_spell:
-            active_spell.end = datetime.now()
-            session.add(active_spell)
-            session.commit()
-            message = 'You have successfully clocked out.'
-        else:
-            error = True
-            success = False
-            message = 'You are not currently clocked in.'
+            # If active spell then end it.
+            if active_spell:
+                active_spell.end = datetime.now()
+                session.add(active_spell)
+                session.commit()
+                message = 'You have successfully clocked out.'
+            else:
+                error = True
+                success = False
+                message = 'You are not currently clocked in.'
+        except Exception as exc:
+            logger.exception("Exception while clocking out the user.")
 
         return redirect('/himama/home')
 
@@ -59,20 +62,23 @@ class ClockIn(Resource):
 
         """
 
-        success = True
-        error = False
-        message = ''
+        try:
+            success = True
+            error = False
+            message = ''
 
-        current_time = datetime.now()
-        active_spell = check_if_any_active_spell(current_user.id)
+            current_time = datetime.now()
+            active_spell = check_if_any_active_spell(current_user.id)
 
-        # If active spell then end it.
-        if not active_spell:
-            if register_clock_in(current_user.id):
-                message = 'You have successfully clocked in.'
-        else:
-            error = True
-            success = False
-            message = 'You are already clocked in.'
+            # If active spell then end it.
+            if not active_spell:
+                if register_clock_in(current_user.id):
+                    message = 'You have successfully clocked in.'
+            else:
+                error = True
+                success = False
+                message = 'You are already clocked in.'
+        except Exception as exc:
+            logger.exception("Exception while clocking In the user.")
 
         return redirect('/himama/home')

@@ -37,21 +37,25 @@ class Login(Resource):
         authenticated = False
         error = ''
         username = ''
-        if not current_user.is_authenticated:
-            username = request.form.get('username')
-            password = request.form.get('password')
+        try:
+            if not current_user.is_authenticated:
+                username = request.form.get('username')
+                password = request.form.get('password')
 
-            user = get_admin_user(username)
-            if user:
-                if user.check_password(password):
-                    authenticated = True
-                    login_user(user)
+                user = get_admin_user(username)
+                if user:
+                    if user.check_password(password):
+                        authenticated = True
+                        login_user(user)
+                    else:
+                        error = "Invalid credentials."
                 else:
-                    error = "Invalid credentials."
+                    error = "No such user exists."
             else:
-                error = "No such user exists."
-        else:
-            authenticated = True
+                authenticated = True
+
+        except Exception as exc:
+            logger.exception("Exception while logging In the user.")
 
         if authenticated:
             return redirect('/himama/home')
@@ -67,7 +71,10 @@ class Logout(Resource):
         Logout handler.
         """
 
-        if current_user.is_authenticated:
-            logout_user()
+        try:
+            if current_user.is_authenticated:
+                logout_user()
+        except Exception as exc:
+            logger.exception("Exception while logging out the user.")
 
         return redirect('/himama/login')
