@@ -268,6 +268,9 @@ class AdminUserView(ModelView):
         model.updated_by = current_user.name
         model.updated_dttm = datetime.now()
 
+    def get_query(self):
+        return self.session.query(self.model).filter(self.model.is_admin.isnot(True))
+
     column_display_pk = False
     page_size = 20
     edit_modal = True
