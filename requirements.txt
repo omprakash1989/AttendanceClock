@@ -51,7 +51,7 @@ SQLAlchemy==1.1.15
 swagger-spec-validator==2.1.0
 urllib3==1.22
 wcwidth==0.1.7
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 slackclient==1.1.0
 Flask-Admin==1.5.1
 Flask-Login==0.4.1
