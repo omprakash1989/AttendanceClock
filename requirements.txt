@@ -49,7 +49,7 @@ s3transfer==0.1.11
 six==1.11.0
 SQLAlchemy==1.1.15
 swagger-spec-validator==2.1.0
-urllib3==1.22
+urllib3==1.26.5
 wcwidth==0.1.7
 Werkzeug==0.12.2
 slackclient==1.1.0
